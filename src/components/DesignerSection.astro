@@ -1,0 +1,261 @@
+---
+// DesignerSection - Portafolio de diseño
+---
+
+<section id="designer" class="designer-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Diseñadora</h2>
+      <p class="section-subtitle">Creando experiencias visuales memorables</p>
+    </div>
+
+    <div class="projects-container">
+      <div class="project-card">
+        <div class="project-image">
+          <div class="placeholder-design design-1">
+            <div class="design-mockup mockup-web"></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>Diseño Web</h3>
+          <p>Interfaces modernas y responsivas que cautivan a los usuarios</p>
+          <div class="project-tags">
+            <span class="tag">UI/UX</span>
+            <span class="tag">Web</span>
+            <span class="tag">Interactive</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image">
+          <div class="placeholder-design design-2">
+            <div class="design-mockup mockup-brand"></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>Identidad de Marca</h3>
+          <p>Creación de identidades visuales únicas y memorables</p>
+          <div class="project-tags">
+            <span class="tag">Branding</span>
+            <span class="tag">Logo</span>
+            <span class="tag">Visual Identity</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image">
+          <div class="placeholder-design design-3">
+            <div class="design-mockup mockup-mobile"></div>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>App Mobile</h3>
+          <p>Experiencias móviles intuitivas y elegantes</p>
+          <div class="project-tags">
+            <span class="tag">Mobile</span>
+            <span class="tag">UX</span>
+            <span class="tag">Prototype</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .designer-section {
+    min-height: 100vh;
+    padding: 5rem 2rem;
+    background: #f8fafc;
+    position: relative;
+  }
+
+  .designer-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeIn 1s ease-out;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    background: linear-gradient(to right, #0ea5e9, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.25rem;
+    color: #64748b;
+    font-weight: 300;
+  }
+
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    animation: fadeInUp 0.8s ease-out backwards;
+  }
+
+  .project-card:nth-child(1) { animation-delay: 0.1s; }
+  .project-card:nth-child(2) { animation-delay: 0.2s; }
+  .project-card:nth-child(3) { animation-delay: 0.3s; }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .project-image {
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .placeholder-design {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease;
+  }
+
+  .project-card:hover .placeholder-design {
+    transform: scale(1.05);
+  }
+
+  .design-1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .design-2 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+
+  .design-3 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  }
+
+  .design-mockup {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .mockup-web {
+    width: 200px;
+    height: 120px;
+  }
+
+  .mockup-brand {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+  .mockup-mobile {
+    width: 90px;
+    height: 160px;
+    border-radius: 20px;
+  }
+
+  .project-info {
+    padding: 2rem;
+  }
+
+  .project-info h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-info p {
+    font-size: 1.1rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #667eea15, #764ba215);
+    color: #667eea;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .tag:hover {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .projects-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
