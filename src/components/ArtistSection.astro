@@ -1,221 +1,374 @@
 ---
-// ArtistSection - Portafolio artístico
+// ArtistSection.astro
+import ProjectCard from "./ProjectCard.astro";
 ---
 
 <section id="artist" class="artist-section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Artista</h2>
-      <p class="section-subtitle">Explorando la creatividad a través de diferentes medios</p>
+  <div class="header-container">
+    <h2 class="section-title">ARTIST</h2>
+  </div>
+
+  <div
+    class="folder-system"
+    id="artist-folders"
+    style="--active-folder-color: var(--color-sand-200, #E3CAAB);"
+  >
+    <!-- Full width background wrapper for CONTENT -->
+    <div class="content-background">
+      <div class="content-container">
+        <!-- Content: Digital -->
+        <div class="folder-sheet active" data-tab="digital">
+          <div class="project-grid">
+            <ProjectCard
+              title="Digital Horizon"
+              description="A series of digital landscapes exploring lighting and texture."
+              images={[
+                "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1502691876148-a84978e59af8?q=80&w=2070&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Neon Dreams"
+              description="Cyberpunk aesthetic character studies and cityscapes."
+              images={[
+                "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1535378437-0dd43669d3d3?q=80&w=1974&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Abstract Flows"
+              description="Fluid dynamics simulations turned into digital art."
+              images={[
+                "https://images.unsplash.com/photo-1633511090164-b43840ea1607?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1541359927273-046b49267996?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Glitch Portraits"
+              description="Explorations in data moshing and digital distortion."
+              images={[
+                "https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=2018&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1515405295579-ba7b4549061c?q=80&w=2070&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+          </div>
+          <div class="sheet-label">File: Digital_Works_2024</div>
+        </div>
+
+        <!-- Content: Classical -->
+        <div class="folder-sheet" data-tab="classical">
+          <div class="project-grid">
+            <ProjectCard
+              title="Oil on Canvas"
+              description="Traditional techniques applied to modern subjects."
+              images={[
+                "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=2045&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1578320339890-50349c25d886?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1577083639236-0f555f0b7790?q=80&w=1999&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Renaissance Revival"
+              description="Studies of light and shadow in the style of the old masters."
+              images={[
+                "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2019&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1580136608079-72029d0de130?q=80&w=2076&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1576769062325-a75cb5634560?q=80&w=1974&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Still Life"
+              description="Contemporary takes on the classic still life composition."
+              images={[
+                "https://images.unsplash.com/photo-1582201387600-47c38575a034?q=80&w=2071&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=2066&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?q=80&w=2070&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+          </div>
+          <div class="sheet-label">File: Classical_Studies</div>
+        </div>
+
+        <!-- Content: Sketch -->
+        <div class="folder-sheet" data-tab="sketch">
+          <div class="project-grid">
+            <ProjectCard
+              title="Charcoal Portraits"
+              description="Raw and expressive charcoal drawings of people."
+              images={[
+                "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1615184697985-c9bde1b07da7?q=80&w=1974&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1518640165980-d3e0e2aa6c1e?q=80&w=1974&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Urban Sketching"
+              description="Quick sketches capturing the energy of the city."
+              images={[
+                "https://images.unsplash.com/photo-1580136608260-4eb11f4b64fe?q=80&w=2076&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1586075010923-2dd45eeed858?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?q=80&w=2109&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Anatomy Studies"
+              description="Detailed graphite drawings focusing on human anatomy."
+              images={[
+                "https://images.unsplash.com/photo-1629814408092-23f2b6040fc6?q=80&w=1974&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1515405295579-ba7b4549061c?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1614730341194-75c60740a5d3?q=80&w=1974&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+          </div>
+          <div class="sheet-label">File: Sketches_&_Concepts</div>
+        </div>
+      </div>
     </div>
 
-    <div class="gallery-grid">
-      <div class="gallery-item item-large">
-        <div class="gallery-image">
-          <div class="placeholder-art art-1"></div>
-        </div>
-        <div class="gallery-overlay">
-          <h3>Obra Digital</h3>
-          <p>Ilustración Digital</p>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="gallery-image">
-          <div class="placeholder-art art-2"></div>
-        </div>
-        <div class="gallery-overlay">
-          <h3>Arte Abstracto</h3>
-          <p>Acrílico sobre lienzo</p>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="gallery-image">
-          <div class="placeholder-art art-3"></div>
-        </div>
-        <div class="gallery-overlay">
-          <h3>Retrato</h3>
-          <p>Técnica mixta</p>
-        </div>
-      </div>
-
-      <div class="gallery-item item-wide">
-        <div class="gallery-image">
-          <div class="placeholder-art art-4"></div>
-        </div>
-        <div class="gallery-overlay">
-          <h3>Paisaje Urbano</h3>
-          <p>Acuarela</p>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="gallery-image">
-          <div class="placeholder-art art-5"></div>
-        </div>
-        <div class="gallery-overlay">
-          <h3>Composición</h3>
-          <p>Collage digital</p>
-        </div>
+    <!-- Tabs Moved to Bottom -->
+    <div class="tabs-wrapper bottom-tabs">
+      <div class="folder-tabs">
+        <button
+          class="tab-btn active"
+          data-target="digital"
+          data-color="var(--color-sand-200, #E3CAAB)"
+        >
+          <span class="tab-num">01</span>
+          <span class="tab-text">digital</span>
+        </button>
+        <button
+          class="tab-btn"
+          data-target="classical"
+          data-color="var(--color-sand-300, #C1AD94)"
+        >
+          <span class="tab-num">02</span>
+          <span class="tab-text">classical</span>
+        </button>
+        <button
+          class="tab-btn"
+          data-target="sketch"
+          data-color="var(--color-steel-100, #8597A5)"
+        >
+          <span class="tab-num">03</span>
+          <span class="tab-text">sketch</span>
+        </button>
       </div>
     </div>
   </div>
 </section>
 
+<script>
+  const system = document.getElementById("artist-folders");
+  if (system) {
+    const tabs = system.querySelectorAll(".tab-btn");
+    const sheets = system.querySelectorAll(".folder-sheet");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        // Remove active class from tabs
+        tabs.forEach((t) => t.classList.remove("active"));
+        // Add active class to clicked tab
+        tab.classList.add("active");
+
+        // Hide all sheets
+        sheets.forEach((sheet) => sheet.classList.remove("active"));
+
+        // Show target sheet
+        const target = tab.getAttribute("data-target");
+        const targetSheet = system.querySelector(
+          `.folder-sheet[data-tab="${target}"]`,
+        );
+        if (targetSheet) targetSheet.classList.add("active");
+
+        // Update system variable for dynamic background color
+        const color = tab.getAttribute("data-color");
+        if (color) {
+          system.style.setProperty("--active-folder-color", color);
+        }
+      });
+    });
+  }
+</script>
+
 <style>
   .artist-section {
-    min-height: 100vh;
-    padding: 5rem 2rem;
-    background: linear-gradient(to bottom, #0f172a, #1e293b);
-    position: relative;
+    padding: 6rem 0;
+    background-color: #fff;
+    color: var(--color-steel-200, #687a92);
+    width: 100%;
+    overflow-x: hidden;
   }
 
-  .artist-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #8b5cf6, transparent);
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-header {
+  .header-container {
+    max-width: 1800px;
+    width: 90%;
+    margin: 0 auto 3rem auto;
     text-align: center;
-    margin-bottom: 4rem;
-    animation: fadeIn 1s ease-out;
   }
 
   .section-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    background: linear-gradient(to right, #8b5cf6, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 1rem;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 900;
+    color: var(--color-sand-300, #c1ad94);
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin: 0;
   }
 
-  .section-subtitle {
-    font-size: 1.25rem;
-    color: #94a3b8;
-    font-weight: 300;
+  /* Folder System */
+  .folder-system {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    --active-folder-color: var(--color-sand-200, #e3caab);
+    transition: --active-folder-color 0.5s ease;
   }
 
-  .gallery-grid {
+  /* Full Width Background for Content */
+  .content-background {
+    width: 100%;
+    background-color: var(--active-folder-color);
+    transition: background-color 0.5s ease;
+    padding: 3rem 0 0 0; /* No bottom padding, handled by height/layout */
+    padding-bottom: 2rem;
+    /* Box shadow to lift it up slightly */
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+    min-height: 500px;
+  }
+
+  /* Centered Content Container */
+  .content-container {
+    width: 90%;
+    max-width: 1800px;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  .folder-sheet {
+    display: none;
+    width: 100%;
+    height: 100%;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .folder-sheet.active {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sheet-label {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.9rem;
+    color: var(--color-steel-200, #687a92);
+    opacity: 0.6;
+    text-align: right;
+    margin-top: 2rem;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    padding-top: 1rem;
+    mix-blend-mode: multiply;
+  }
+
+  .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
   }
 
-  .gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    height: 300px;
+  /* Tabs Wrapper at Bottom */
+  .tabs-wrapper {
+    width: 90%;
+    max-width: 1800px;
+    margin: 0 auto;
+    display: flex;
+    /* If we want the tabs to look like they are attached to the bottom of the folder */
+    margin-top: -1px; /* Slight overlap with content bg if possible? Or just flush */
+  }
+
+  .folder-tabs {
+    display: flex;
+    width: 40%;
+    gap: 0;
+    margin-right: auto;
+  }
+
+  .tab-btn {
+    flex: 1;
+    border: none;
+    padding: 1rem 1.5rem;
     cursor: pointer;
-    animation: fadeInUp 0.8s ease-out backwards;
-  }
-
-  .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-  .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-  .gallery-item:nth-child(3) { animation-delay: 0.3s; }
-  .gallery-item:nth-child(4) { animation-delay: 0.4s; }
-  .gallery-item:nth-child(5) { animation-delay: 0.5s; }
-
-  .item-large {
-    grid-row: span 2;
-    height: auto;
-  }
-
-  .item-wide {
-    grid-column: span 2;
-  }
-
-  .gallery-image {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s ease;
-  }
-
-  .gallery-item:hover .gallery-image {
-    transform: scale(1.1);
-  }
-
-  .placeholder-art {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     position: relative;
+    text-align: left;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100px;
   }
 
-  .art-1 {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  .tab-btn:nth-child(1) {
+    background-color: var(--color-sand-200, #e3caab);
   }
-
-  .art-2 {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  .tab-btn:nth-child(2) {
+    background-color: var(--color-sand-300, #c1ad94);
   }
-
-  .art-3 {
-    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-  }
-
-  .art-4 {
-    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-  }
-
-  .art-5 {
-    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
-  }
-
-  .gallery-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 2rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  .tab-btn:nth-child(3) {
+    background-color: var(--color-steel-100, #8597a5);
     color: white;
-    transform: translateY(100%);
-    transition: transform 0.4s ease;
   }
 
-  .gallery-item:hover .gallery-overlay {
-    transform: translateY(0);
+  .tab-btn.active {
+    filter: brightness(1);
+    z-index: 10;
+    padding-top: 1.5rem; /* Make it look slightly extended */
+    margin-top: -10px; /* Pull it up to overlap content */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
   }
 
-  .gallery-overlay h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+  .tab-btn:not(.active) {
+    filter: brightness(0.85); /* Darker */
   }
 
-  .gallery-overlay p {
-    font-size: 1rem;
-    opacity: 0.9;
+  .tab-btn:hover:not(.active) {
+    filter: brightness(0.95);
+  }
+
+  .tab-num {
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    opacity: 0.6;
+    margin-bottom: 0.2rem;
+  }
+
+  .tab-text {
+    font-family: "Times New Roman", serif;
+    font-size: 1.8rem;
+    line-height: 1;
+    font-style: italic;
   }
 
   @keyframes fadeIn {
     from {
       opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(10px);
     }
     to {
       opacity: 1;
@@ -223,17 +376,38 @@
     }
   }
 
+  @media (max-width: 1024px) {
+    .folder-tabs {
+      width: 60%;
+    }
+    .header-container,
+    .tabs-wrapper,
+    .content-container {
+      width: 95%;
+    }
+  }
+
   @media (max-width: 768px) {
-    .gallery-grid {
+    .folder-tabs {
+      width: 100%;
+      flex-direction: row;
+    }
+    .tab-btn {
+      min-height: 80px;
+      padding: 0.5rem;
+      margin-top: 0;
+    }
+    .tab-btn.active {
+      margin-top: 0;
+    }
+    .tab-text {
+      font-size: 1.2rem;
+    }
+    .content-background {
+      padding: 1.5rem 0;
+    }
+    .project-grid {
       grid-template-columns: 1fr;
-    }
-
-    .item-wide {
-      grid-column: span 1;
-    }
-
-    .gallery-item {
-      height: 250px;
     }
   }
 </style>

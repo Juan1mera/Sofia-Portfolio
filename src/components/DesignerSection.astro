@@ -1,251 +1,362 @@
 ---
-// DesignerSection - Portafolio de diseño
+// DesignerSection.astro
+import ProjectCard from "./ProjectCard.astro";
 ---
 
 <section id="designer" class="designer-section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Diseñadora</h2>
-      <p class="section-subtitle">Creando experiencias visuales memorables</p>
+  <div class="header-container">
+    <h2 class="section-title">DESIGNER</h2>
+  </div>
+
+  <div
+    class="folder-system"
+    id="designer-folders"
+    style="--active-folder-color: var(--color-steel-100, #8597A5);"
+  >
+    <!-- Full width background wrapper for CONTENT -->
+    <div class="content-background">
+      <div class="content-container">
+        <!-- Content: UI/UX -->
+        <div class="folder-sheet active" data-tab="uiux">
+          <div class="project-grid">
+            <ProjectCard
+              title="Modern Dashboard"
+              description="A clean, data-driven dashboard interface for analytics."
+              images={[
+                "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="E-commerce App"
+              description="User-friendly shopping experience with seamless checkout."
+              images={[
+                "https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=2080&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=2070&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Fintech Mobile"
+              description="Secure and intuitive banking application design."
+              images={[
+                "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1470&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1470&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1556742102-de63bb9ade7d?q=80&w=2070&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+          </div>
+          <div class="sheet-label">File: Web_Interfaces_v9</div>
+        </div>
+
+        <!-- Content: Branding -->
+        <div class="folder-sheet" data-tab="branding">
+          <div class="project-grid">
+            <ProjectCard
+              title="Coffee Brand"
+              description="Visual identity for a boutique coffee roaster."
+              images={[
+                "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1974&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1974&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Tech Identity"
+              description="Minimalist logo and branding for a startup."
+              images={[
+                "https://images.unsplash.com/photo-1626785774573-4b799314346d?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1955&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Fashion Label"
+              description="Elegant branding for a luxury clothing line."
+              images={[
+                "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+          </div>
+          <div class="sheet-label">File: Brand_Identity_Concepts</div>
+        </div>
+
+        <!-- Content: Mobile -->
+        <div class="folder-sheet" data-tab="mobile">
+          <div class="project-grid">
+            <ProjectCard
+              title="Social App"
+              description="Connecting communities through mobile interfaces."
+              images={[
+                "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=2072&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1974&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Health Tracker"
+              description="Wellness monitoring app with clean visualizations."
+              images={[
+                "https://images.unsplash.com/photo-1555774698-4b7910b8e733?q=80&w=2066&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1576091160550-2187d80a8543?q=80&w=2070&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+            <ProjectCard
+              title="Travel Guide"
+              description="Interactive map and guide for travelers."
+              images={[
+                "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2070&auto=format&fit=crop",
+              ]}
+              link="#"
+            />
+          </div>
+          <div class="sheet-label">File: Mobile_Prototypes</div>
+        </div>
+      </div>
     </div>
 
-    <div class="projects-container">
-      <div class="project-card">
-        <div class="project-image">
-          <div class="placeholder-design design-1">
-            <div class="design-mockup mockup-web"></div>
-          </div>
-        </div>
-        <div class="project-info">
-          <h3>Diseño Web</h3>
-          <p>Interfaces modernas y responsivas que cautivan a los usuarios</p>
-          <div class="project-tags">
-            <span class="tag">UI/UX</span>
-            <span class="tag">Web</span>
-            <span class="tag">Interactive</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-image">
-          <div class="placeholder-design design-2">
-            <div class="design-mockup mockup-brand"></div>
-          </div>
-        </div>
-        <div class="project-info">
-          <h3>Identidad de Marca</h3>
-          <p>Creación de identidades visuales únicas y memorables</p>
-          <div class="project-tags">
-            <span class="tag">Branding</span>
-            <span class="tag">Logo</span>
-            <span class="tag">Visual Identity</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-image">
-          <div class="placeholder-design design-3">
-            <div class="design-mockup mockup-mobile"></div>
-          </div>
-        </div>
-        <div class="project-info">
-          <h3>App Mobile</h3>
-          <p>Experiencias móviles intuitivas y elegantes</p>
-          <div class="project-tags">
-            <span class="tag">Mobile</span>
-            <span class="tag">UX</span>
-            <span class="tag">Prototype</span>
-          </div>
-        </div>
+    <!-- Tabs Moved to Bottom -->
+    <div class="tabs-wrapper bottom-tabs">
+      <div class="folder-tabs">
+        <button
+          class="tab-btn active"
+          data-target="uiux"
+          data-color="var(--color-steel-100, #8597A5)"
+        >
+          <span class="tab-num">01</span>
+          <span class="tab-text">ui/ux</span>
+        </button>
+        <button class="tab-btn" data-target="branding" data-color="#cbd5e1">
+          <span class="tab-num">02</span>
+          <span class="tab-text">branding</span>
+        </button>
+        <button
+          class="tab-btn"
+          data-target="mobile"
+          data-color="var(--color-steel-200, #687A92)"
+        >
+          <span class="tab-num">03</span>
+          <span class="tab-text">mobile</span>
+        </button>
       </div>
     </div>
   </div>
 </section>
 
+<script>
+  // Simple Vanilla JS for tab switching (Scoped to this section id)
+  const system = document.getElementById("designer-folders");
+  if (system) {
+    const tabs = system.querySelectorAll(".tab-btn");
+    const sheets = system.querySelectorAll(".folder-sheet");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        // Remove active class from tabs
+        tabs.forEach((t) => t.classList.remove("active"));
+        // Add active class to clicked tab
+        tab.classList.add("active");
+
+        // Hide all sheets
+        sheets.forEach((sheet) => sheet.classList.remove("active"));
+
+        // Show target sheet
+        const target = tab.getAttribute("data-target");
+        const targetSheet = system.querySelector(
+          `.folder-sheet[data-tab="${target}"]`,
+        );
+        if (targetSheet) targetSheet.classList.add("active");
+
+        // Update color var
+        const color = tab.getAttribute("data-color");
+        if (color) {
+          system.style.setProperty("--active-folder-color", color);
+        }
+      });
+    });
+  }
+</script>
+
 <style>
   .designer-section {
-    min-height: 100vh;
-    padding: 5rem 2rem;
-    background: #f8fafc;
-    position: relative;
+    padding: 6rem 0;
+    background-color: #f8fafc;
+    color: var(--color-steel-200, #687a92);
+    width: 100%;
+    overflow-x: hidden;
   }
 
-  .designer-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
-      radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 40%);
-    pointer-events: none;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .section-header {
+  .header-container {
+    max-width: 1800px;
+    width: 90%;
+    margin: 0 auto 3rem auto;
     text-align: center;
-    margin-bottom: 4rem;
-    animation: fadeIn 1s ease-out;
   }
 
   .section-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    background: linear-gradient(to right, #0ea5e9, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 1rem;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 900;
+    color: var(--color-steel-100, #8597a5);
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin: 0;
   }
 
-  .section-subtitle {
-    font-size: 1.25rem;
-    color: #64748b;
-    font-weight: 300;
+  /* Folder System */
+  .folder-system {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    --active-folder-color: var(--color-steel-100, #8597a5);
+    transition: --active-folder-color 0.5s ease;
   }
 
-  .projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+  /* Full Width Background for Content */
+  .content-background {
+    width: 100%;
+    background-color: var(--active-folder-color);
+    transition: background-color 0.5s ease;
+    padding: 3rem 0 0 0;
+    padding-bottom: 2rem;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+    min-height: 500px;
   }
 
-  .project-card {
-    background: white;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s ease;
-    animation: fadeInUp 0.8s ease-out backwards;
+  /* Centered Content Container */
+  .content-container {
+    width: 90%;
+    max-width: 1800px;
+    margin: 0 auto;
+    height: 100%;
   }
 
-  .project-card:nth-child(1) { animation-delay: 0.1s; }
-  .project-card:nth-child(2) { animation-delay: 0.2s; }
-  .project-card:nth-child(3) { animation-delay: 0.3s; }
-
-  .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  }
-
-  .project-image {
-    height: 280px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .placeholder-design {
+  .folder-sheet {
+    display: none;
     width: 100%;
     height: 100%;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .folder-sheet.active {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.4s ease;
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  .project-card:hover .placeholder-design {
-    transform: scale(1.05);
-  }
-
-  .design-1 {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  }
-
-  .design-2 {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  }
-
-  .design-3 {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  }
-
-  .design-mockup {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-  }
-
-  .mockup-web {
-    width: 200px;
-    height: 120px;
-  }
-
-  .mockup-brand {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-  }
-
-  .mockup-mobile {
-    width: 90px;
-    height: 160px;
-    border-radius: 20px;
-  }
-
-  .project-info {
-    padding: 2rem;
-  }
-
-  .project-info h3 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 0.75rem;
-  }
-
-  .project-info p {
-    font-size: 1.1rem;
-    color: #64748b;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tag {
-    padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, #667eea15, #764ba215);
-    color: #667eea;
-    border-radius: 20px;
+  .sheet-label {
+    font-family: "Courier New", Courier, monospace;
     font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    color: var(--color-steel-200, #687a92);
+    opacity: 0.6;
+    text-align: right;
+    margin-top: 2rem;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    padding-top: 1rem;
+    mix-blend-mode: multiply;
   }
 
-  .tag:hover {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+  }
+
+  /* Tabs Wrapper at Bottom */
+  .tabs-wrapper {
+    width: 90%;
+    max-width: 1800px;
+    margin: 0 auto;
+    display: flex;
+    margin-top: -1px;
+  }
+
+  .folder-tabs {
+    display: flex;
+    width: 40%;
+    gap: 0;
+    margin-right: auto;
+  }
+
+  .tab-btn {
+    flex: 1;
+    border: none;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    position: relative;
+    text-align: left;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100px;
+  }
+
+  /* Colors defined directly here for simplicity */
+  .tab-btn:nth-child(1) {
+    background-color: var(--color-steel-100, #8597a5);
     color: white;
-    transform: translateY(-2px);
+  }
+  .tab-btn:nth-child(2) {
+    background-color: #cbd5e1;
+    color: var(--color-steel-200, #687a92);
+  } /* Light gray */
+  .tab-btn:nth-child(3) {
+    background-color: var(--color-steel-200, #687a92);
+    color: white;
+  }
+
+  .tab-btn.active {
+    filter: brightness(1);
+    z-index: 10;
+    padding-top: 1.5rem; /* Make it look slightly extended */
+    margin-top: -10px; /* Pull it up to overlap content */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+  }
+
+  .tab-btn:not(.active) {
+    filter: brightness(0.85);
+  }
+
+  .tab-btn:hover:not(.active) {
+    filter: brightness(0.95);
+  }
+
+  .tab-num {
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    opacity: 0.6;
+    margin-bottom: 0.2rem;
+  }
+
+  .tab-text {
+    font-family: "Times New Roman", serif;
+    font-size: 1.8rem;
+    line-height: 1;
+    font-style: italic;
   }
 
   @keyframes fadeIn {
     from {
       opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(10px);
     }
     to {
       opacity: 1;
@@ -253,8 +364,40 @@
     }
   }
 
+  @media (max-width: 1024px) {
+    .folder-tabs {
+      width: 60%;
+    }
+    .header-container,
+    .tabs-wrapper,
+    .content-container {
+      width: 95%;
+    }
+  }
+
   @media (max-width: 768px) {
-    .projects-container {
+    .section-title {
+      font-size: 4rem;
+    }
+    .folder-tabs {
+      width: 100%;
+      flex-direction: row;
+    }
+    .tab-btn {
+      min-height: 80px;
+      padding: 0.5rem;
+      margin-top: 0;
+    }
+    .tab-btn.active {
+      margin-top: 0;
+    }
+    .tab-text {
+      font-size: 1.2rem;
+    }
+    .content-background {
+      padding: 1.5rem 0;
+    }
+    .project-grid {
       grid-template-columns: 1fr;
     }
   }
