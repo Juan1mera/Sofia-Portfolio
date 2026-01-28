@@ -1,2 +1,12 @@
 @import "tailwindcss";
 
+@theme {
+  /* Sand / Beige tones */
+  --color-sand-100: #ECDFCC;
+  --color-sand-200: #E3CAAB;
+  --color-sand-300: #C1AD94;
+
+  /* Blue-Gray / Steel tones */
+  --color-steel-100: #8597A5;
+  --color-steel-200: #687A92;
+}
