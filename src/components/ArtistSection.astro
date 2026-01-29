@@ -147,7 +147,6 @@ import ProjectCard from "./ProjectCard.astro";
           data-target="digital"
           data-color="var(--color-sand-200, #E3CAAB)"
         >
-          <span class="tab-num">01</span>
           <span class="tab-text">digital</span>
         </button>
         <button
@@ -155,7 +154,6 @@ import ProjectCard from "./ProjectCard.astro";
           data-target="classical"
           data-color="var(--color-sand-300, #C1AD94)"
         >
-          <span class="tab-num">02</span>
           <span class="tab-text">classical</span>
         </button>
         <button
@@ -163,7 +161,6 @@ import ProjectCard from "./ProjectCard.astro";
           data-target="sketch"
           data-color="var(--color-steel-100, #8597A5)"
         >
-          <span class="tab-num">03</span>
           <span class="tab-text">sketch</span>
         </button>
       </div>
@@ -297,37 +294,58 @@ import ProjectCard from "./ProjectCard.astro";
     max-width: 1800px;
     margin: 0 auto;
     display: flex;
-    /* If we want the tabs to look like they are attached to the bottom of the folder */
-    margin-top: -1px; /* Slight overlap with content bg if possible? Or just flush */
+    margin-top: 0; /* Flush with section */
+    position: relative;
   }
 
   .folder-tabs {
     display: flex;
-    width: 40%;
-    gap: 0;
+    width: 65%; /* Wider tabs */
+    gap: 0.25rem;
     margin-right: auto;
   }
 
   .tab-btn {
     flex: 1;
     border: none;
-    padding: 1rem 1.5rem;
+    padding: 1rem 2.5rem; /* More horizontal padding */
     cursor: pointer;
     position: relative;
-    text-align: left;
-    transition: all 0.3s ease;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+    /* Trapezoid: Left side square, right side diagonal */
+    clip-path: polygon(
+      0 0,
+      /* top left - square */ 92% 0,
+      /* top right before cut */ 100% 100%,
+      /* bottom right - diagonal cut */ 0 100% /* bottom left - square */
+    );
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    transform-origin: bottom center;
+  }
+
+  /* Subtle inner border for depth */
+  .tab-btn::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    clip-path: polygon(0 0, 92% 0, 100% 100%, 0 100%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    pointer-events: none;
   }
 
   .tab-btn:nth-child(1) {
     background-color: var(--color-sand-200, #e3caab);
+    color: #5a4a3a;
   }
   .tab-btn:nth-child(2) {
     background-color: var(--color-sand-300, #c1ad94);
+    color: #4a3a2a;
   }
   .tab-btn:nth-child(3) {
     background-color: var(--color-steel-100, #8597a5);
@@ -335,19 +353,21 @@ import ProjectCard from "./ProjectCard.astro";
   }
 
   .tab-btn.active {
-    filter: brightness(1);
     z-index: 10;
-    padding-top: 1.5rem; /* Make it look slightly extended */
-    margin-top: -10px; /* Pull it up to overlap content */
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
+    padding-bottom: 2rem;
   }
 
   .tab-btn:not(.active) {
-    filter: brightness(0.85); /* Darker */
+    opacity: 0.7;
+    transform: scale(0.96);
   }
 
   .tab-btn:hover:not(.active) {
-    filter: brightness(0.95);
+    opacity: 0.85;
+    transform: scale(0.98) translateY(-2px);
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.12);
   }
 
   .tab-num {

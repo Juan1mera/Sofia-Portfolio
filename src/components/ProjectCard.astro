@@ -1,165 +1,193 @@
 ---
-// src/components/ProjectCard.astro
-const { title, description, images = [], link = "#" } = Astro.props;
+const {
+    title,
+    description,
+    images = [],
+    link = "#",
+    color = "#E3CAAB",
+} = Astro.props;
 
-// Ensure we have at least one image to show default
-const coverImage = images[0] || "";
+// Prepare images (ensure we have 3 for the effect)
+const displayImages = images.slice(0, 3);
+while (displayImages.length < 3) {
+    displayImages.push(null);
+}
+
+// Generate a unique ID for this instance
+const id = "card-" + Math.random().toString(36).substr(2, 9);
 ---
 
-<a href={link} class="project-card">
-    <!-- Default State -->
-    <div class="card-default">
-        <div class="image-wrapper">
-            <img src={coverImage} alt={title} loading="lazy" />
+<!-- Backdrop blur overlay - Fixed to cover entire screen -->
+<div
+    id={`backdrop-${id}`}
+    class="fixed inset-0 bg-black/30 backdrop-blur-lg opacity-0 pointer-events-none transition-opacity duration-500 z-40"
+>
+</div>
+
+<div
+    id={id}
+    class="project-card group relative w-full aspect-[4/5] cursor-pointer overflow-visible z-50"
+>
+    <!-- Default State: Single Image + Title -->
+    <div
+        class="card-base absolute inset-0 rounded-xl overflow-hidden bg-white shadow-lg transition-all duration-500 group-hover:scale-95 group-hover:opacity-0 group-hover:pointer-events-none"
+    >
+        <div class="image-container relative w-full h-full">
+            {
+                displayImages[0] && (
+                    <img
+                        src={displayImages[0]}
+                        alt={title}
+                        class="w-full h-full object-cover"
+                    />
+                )
+            }
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+            >
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+                <h3
+                    class="text-white font-serif italic text-2xl md:text-3xl drop-shadow-lg"
+                >
+                    {title}
+                </h3>
+            </div>
         </div>
-        <h3 class="card-title">{title}</h3>
     </div>
 
-    <!-- Hover State (Overlay) -->
-    <div class="card-hover">
-        <div class="hover-content">
-            <div class="hover-header">
-                <h3 class="card-title-hover">{title}</h3>
-                <p class="card-desc">{description}</p>
-            </div>
-            <div class="hover-images">
-                {
-                    images.slice(0, 3).map((img, index) => (
-                        <div class="mini-img">
+    <!-- Hover State: Fanned Out Images -->
+    <div
+        class="images-fan absolute inset-0 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-500"
+    >
+        {
+            displayImages.map((img: string | null, i: number) => {
+                const transforms = [
+                    "translate(-60%, -10%) rotate(-12deg)",
+                    "translate(0%, -20%) rotate(0deg)",
+                    "translate(60%, -10%) rotate(12deg)",
+                ];
+
+                const delays = ["0ms", "100ms", "200ms"];
+
+                return (
+                    <div
+                        class={`paper-item absolute left-1/2 top-1/2 w-[70%] h-[85%] -translate-x-1/2 -translate-y-1/2
+                            rounded-lg shadow-2xl bg-white border-4 border-white
+                            opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100
+                            ${i === 0 ? "z-10" : ""}
+                            ${i === 1 ? "z-20" : ""}
+                            ${i === 2 ? "z-30" : ""}`}
+                        style={`
+                        transform: translateX(-50%) translateY(-50%);
+                        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${delays[i]};
+                    `}
+                        data-index={i}
+                        data-transform={transforms[i]}
+                    >
+                        {img && (
                             <img
                                 src={img}
-                                alt={`${title} ${index + 1}`}
-                                loading="lazy"
+                                alt={`${title} ${i + 1}`}
+                                class="w-full h-full object-cover rounded"
                             />
-                        </div>
-                    ))
-                }
-            </div>
+                        )}
+                        {!img && (
+                            <div class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400 rounded">
+                                No Image
+                            </div>
+                        )}
+                    </div>
+                );
+            })
+        }
+
+        <!-- Title overlay on hover -->
+        <div
+            class="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 text-center opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-300"
+        >
+            <h3
+                class="text-white font-serif italic text-3xl md:text-4xl drop-shadow-2xl mb-2"
+            >
+                {title}
+            </h3>
+            <p
+                class="text-white/90 text-sm md:text-base drop-shadow-lg max-w-md px-4"
+            >
+                {description}
+            </p>
         </div>
     </div>
-</a>
+</div>
 
 <style>
     .project-card {
-        position: relative;
-        display: block;
-        width: 100%;
-        /* Aspect ratio for the card slot */
-        aspect-ratio: 4/5;
-        text-decoration: none;
-        color: inherit;
+        perspective: 1000px;
     }
 
-    /* Default Appearance */
-    .card-default {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.4);
-        border-radius: 4px;
-        overflow: hidden;
-        transition: opacity 0.3s ease;
+    .images-fan .paper-item {
+        backface-visibility: hidden;
     }
 
-    .image-wrapper {
-        flex: 1;
-        overflow: hidden;
+    /* Apply transforms when group is hovered */
+    .group:hover .paper-item[data-index="0"] {
+        transform: translateX(-50%) translateY(-50%) translate(-60%, -10%)
+            rotate(-12deg) !important;
     }
 
-    .image-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(20%);
-        transition: transform 0.5s ease;
+    .group:hover .paper-item[data-index="1"] {
+        transform: translateX(-50%) translateY(-50%) translate(0%, -20%)
+            rotate(0deg) !important;
     }
 
-    .card-title {
-        padding: 1rem;
-        font-family: "Times New Roman", serif;
-        font-size: 1.5rem;
-        font-weight: normal;
-        font-style: italic;
-        margin: 0;
-        background: rgba(255, 255, 255, 0.8);
-        color: #333;
-        text-align: center;
+    .group:hover .paper-item[data-index="2"] {
+        transform: translateX(-50%) translateY(-50%) translate(60%, -10%)
+            rotate(12deg) !important;
     }
 
-    /* Hover State Appearance */
-    .card-hover {
-        position: absolute;
-        top: -10%;
-        left: -10%;
-        width: 120%;
-        height: auto;
-        min-height: 120%;
-        background: #fff;
-        border-radius: 4px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        opacity: 0;
-        pointer-events: none; /* Initially untouchable */
-        z-index: 10;
-        transform: scale(0.95);
-        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .project-card:hover .card-hover {
-        opacity: 1;
-        pointer-events: auto;
-        transform: scale(1);
-    }
-
-    /* Optional: Hide default when hovering to avoid clutter or keep it under? 
-     Keeping it under is safer in case hover doesn't load instantly. 
-     But let's fade it slightly. 
-  */
-    .project-card:hover .card-default {
-        opacity: 0;
-    }
-
-    .hover-header {
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-
-    .card-title-hover {
-        font-family: "Times New Roman", serif;
-        font-size: 1.8rem;
-        font-style: italic;
-        margin: 0 0 0.5rem 0;
-        color: #1a1a1a;
-    }
-
-    .card-desc {
-        font-family: "Inter", sans-serif;
-        font-size: 0.85rem;
-        color: #666;
-        line-height: 1.4;
-        margin: 0;
-    }
-
-    .hover-images {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.5rem;
-        margin-top: auto;
-    }
-
-    .mini-img {
-        aspect-ratio: 1/1;
-        border-radius: 2px;
-        overflow: hidden;
-    }
-
-    .mini-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .images-fan .paper-item:hover {
+        transform: translateX(-50%) translateY(-60%) scale(1.05) !important;
+        z-index: 50 !important;
+        transition: all 0.3s ease !important;
     }
 </style>
+
+<script define:vars={{ id }}>
+    const card = document.getElementById(id);
+    const backdrop = document.getElementById(`backdrop-${id}`);
+    const papers = card?.querySelectorAll(".paper-item");
+
+    // Show/hide backdrop on hover
+    if (card && backdrop) {
+        card.addEventListener("mouseenter", () => {
+            backdrop.classList.remove("opacity-0", "pointer-events-none");
+            backdrop.classList.add("opacity-100");
+        });
+
+        card.addEventListener("mouseleave", () => {
+            backdrop.classList.add("opacity-0", "pointer-events-none");
+            backdrop.classList.remove("opacity-100");
+        });
+    }
+
+    if (papers) {
+        papers.forEach((paper, index) => {
+            paper.addEventListener("mousemove", (e) => {
+                const rect = paper.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+
+                const rotateX = (y / rect.height) * 10;
+                const rotateY = -(x / rect.width) * 10;
+
+                const baseTransform = paper.getAttribute("data-transform");
+                paper.style.transform = `translateX(-50%) translateY(-50%) ${baseTransform} rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+
+            paper.addEventListener("mouseleave", () => {
+                const baseTransform = paper.getAttribute("data-transform");
+                paper.style.transform = `translateX(-50%) translateY(-50%) ${baseTransform}`;
+            });
+        });
+    }
+</script>
