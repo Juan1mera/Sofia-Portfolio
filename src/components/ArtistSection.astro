@@ -60,7 +60,7 @@ import ProjectCard from "./ProjectCard.astro";
               link="#"
             />
           </div>
-          <div class="sheet-label">File: Digital_Works_2024</div>
+          <!-- <div class="sheet-label">File: Digital_Works_2024</div> -->
         </div>
 
         <!-- Content: Classical -->
@@ -97,7 +97,7 @@ import ProjectCard from "./ProjectCard.astro";
               link="#"
             />
           </div>
-          <div class="sheet-label">File: Classical_Studies</div>
+          <!-- <div class="sheet-label">File: Classical_Studies</div> -->
         </div>
 
         <!-- Content: Sketch -->
@@ -134,7 +134,7 @@ import ProjectCard from "./ProjectCard.astro";
               link="#"
             />
           </div>
-          <div class="sheet-label">File: Sketches_&_Concepts</div>
+          <!-- <div class="sheet-label">File: Sketches_&_Concepts</div> -->
         </div>
       </div>
     </div>
@@ -373,7 +373,6 @@ import ProjectCard from "./ProjectCard.astro";
 
   .tab-btn {
     flex: 1;
-    border: none;
     padding: 1rem 2.5rem;
     cursor: pointer;
     position: relative;
@@ -397,13 +396,11 @@ import ProjectCard from "./ProjectCard.astro";
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Subtle inner border for depth */
   .tab-btn::after {
     content: "";
     position: absolute;
     inset: 2px;
     clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
     pointer-events: none;
     z-index: 2;
   }
@@ -431,13 +428,12 @@ import ProjectCard from "./ProjectCard.astro";
     background-color: var(--color-steel-100, #8597a5);
   }
 
-  /* CAPAS DE PAPEL - Cada pestaña tiene su propia capa */
+  /* Capas por pestañas */
   .tab-layer {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     width: 300vw;
-    /* La capa empieza desde el top de la pestaña y se extiende hacia arriba */
     bottom: 100%;
     pointer-events: none;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -446,7 +442,7 @@ import ProjectCard from "./ProjectCard.astro";
 
   /* Altura dinámica para cada capa según su posición cuando está inactiva */
   .tab-btn:nth-child(1):not(.active) .tab-layer {
-    height: calc(60px + 16px); /* padding-top + translateY */
+    height: calc(60px + 16px);
   }
 
   .tab-btn:nth-child(2):not(.active) .tab-layer {
@@ -457,7 +453,7 @@ import ProjectCard from "./ProjectCard.astro";
     height: calc(60px + 32px);
   }
 
-  /* Durante hover, ajustar la altura */
+  /* Durante hover, ajusta la altura */
   .tab-btn:nth-child(1):hover:not(.active) .tab-layer {
     height: calc(60px + 22px);
   }
