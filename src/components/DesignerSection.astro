@@ -3,7 +3,7 @@
 import ProjectCard from "./ProjectCard.astro";
 ---
 
-<section id="designer" class="designer-section">
+<section id="designer" class="portfolio-section">
   <div class="header-container">
     <h2 class="section-title">DESIGNER</h2>
   </div>
@@ -11,7 +11,7 @@ import ProjectCard from "./ProjectCard.astro";
   <div
     class="folder-system"
     id="designer-folders"
-    style="--active-folder-color: var(--color-steel-100, #8597A5);"
+    style="--active-folder-color: #253038;"
   >
     <!-- Full width background wrapper for CONTENT -->
     <div class="content-background">
@@ -50,7 +50,6 @@ import ProjectCard from "./ProjectCard.astro";
               link="#"
             />
           </div>
-          <div class="sheet-label">File: Web_Interfaces_v9</div>
         </div>
 
         <!-- Content: Branding -->
@@ -87,7 +86,6 @@ import ProjectCard from "./ProjectCard.astro";
               link="#"
             />
           </div>
-          <div class="sheet-label">File: Brand_Identity_Concepts</div>
         </div>
 
         <!-- Content: Mobile -->
@@ -124,30 +122,44 @@ import ProjectCard from "./ProjectCard.astro";
               link="#"
             />
           </div>
-          <div class="sheet-label">File: Mobile_Prototypes</div>
         </div>
       </div>
     </div>
 
-    <!-- Tabs Moved to Bottom -->
+    <!-- Tabs at Bottom -->
     <div class="tabs-wrapper bottom-tabs">
       <div class="folder-tabs">
         <button
           class="tab-btn active"
           data-target="uiux"
-          data-color="var(--color-steel-100, #8597A5)"
+          data-color="#253038"
+          data-index="0"
         >
+          <div class="tab-background"></div>
           <span class="tab-text">ui/ux</span>
+          <div class="tab-layer" data-layer-index="0"></div>
         </button>
-        <button class="tab-btn" data-target="branding" data-color="#cbd5e1">
+
+        <button
+          class="tab-btn"
+          data-target="branding"
+          data-color="#2a2738"
+          data-index="1"
+        >
+          <div class="tab-background"></div>
           <span class="tab-text">branding</span>
+          <div class="tab-layer" data-layer-index="1"></div>
         </button>
+
         <button
           class="tab-btn"
           data-target="mobile"
-          data-color="var(--color-steel-200, #687A92)"
+          data-color="#222838"
+          data-index="2"
         >
+          <div class="tab-background"></div>
           <span class="tab-text">mobile</span>
+          <div class="tab-layer" data-layer-index="2"></div>
         </button>
       </div>
     </div>
@@ -155,44 +167,59 @@ import ProjectCard from "./ProjectCard.astro";
 </section>
 
 <script>
-  // Simple Vanilla JS for tab switching (Scoped to this section id)
   const system = document.getElementById("designer-folders");
   if (system) {
     const tabs = system.querySelectorAll(".tab-btn");
     const sheets = system.querySelectorAll(".folder-sheet");
 
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        // Remove active class from tabs
-        tabs.forEach((t) => t.classList.remove("active"));
-        // Add active class to clicked tab
-        tab.classList.add("active");
+    const tabColors = ["#253038", "#2a2738", "#222838"];
 
-        // Hide all sheets
+    function updateLayers() {
+      tabs.forEach((tab, index) => {
+        const layer = tab.querySelector(".tab-layer") as HTMLElement | null;
+        const isActive = tab.classList.contains("active");
+
+        if (layer) {
+          if (isActive) {
+            layer.style.display = "none";
+          } else {
+            layer.style.display = "block";
+            layer.style.backgroundColor = tabColors[index];
+          }
+        }
+      });
+    }
+
+    updateLayers();
+
+    tabs.forEach((tab, currentIndex) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
         sheets.forEach((sheet) => sheet.classList.remove("active"));
 
-        // Show target sheet
         const target = tab.getAttribute("data-target");
         const targetSheet = system.querySelector(
           `.folder-sheet[data-tab="${target}"]`,
         );
         if (targetSheet) targetSheet.classList.add("active");
 
-        // Update color var
         const color = tab.getAttribute("data-color");
         if (color) {
           system.style.setProperty("--active-folder-color", color);
         }
+
+        updateLayers();
       });
     });
   }
 </script>
 
 <style>
-  .designer-section {
+  .portfolio-section {
     padding: 6rem 0;
-    background-color: #f8fafc;
-    color: var(--color-steel-200, #687a92);
+    background-color: var(--color-bg-primary, #0a0a0a);
+    color: var(--color-text-primary, #f5f5f5);
     width: 100%;
     overflow-x: hidden;
   }
@@ -205,13 +232,14 @@ import ProjectCard from "./ProjectCard.astro";
   }
 
   .section-title {
-    font-family: "Inter", sans-serif;
+    font-family: "Alfa Slab One", serif;
     font-size: clamp(3rem, 10vw, 8rem);
-    font-weight: 900;
-    color: var(--color-steel-100, #8597a5);
+    font-weight: 400;
+    color: var(--color-accent, #e3caab);
     text-transform: uppercase;
     line-height: 0.9;
     margin: 0;
+    letter-spacing: -0.02em;
   }
 
   /* Folder System */
@@ -219,7 +247,7 @@ import ProjectCard from "./ProjectCard.astro";
     width: 100%;
     display: flex;
     flex-direction: column;
-    --active-folder-color: var(--color-steel-100, #8597a5);
+    --active-folder-color: #151a1e;
     transition: --active-folder-color 0.5s ease;
   }
 
@@ -229,9 +257,9 @@ import ProjectCard from "./ProjectCard.astro";
     background-color: var(--active-folder-color);
     transition: background-color 0.5s ease;
     padding: 3rem 0 0 0;
-    padding-bottom: 2rem;
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 -1px 0 rgba(227, 202, 171, 0.1);
     min-height: 500px;
+    margin-bottom: 0;
   }
 
   /* Centered Content Container */
@@ -255,18 +283,6 @@ import ProjectCard from "./ProjectCard.astro";
     gap: 1rem;
   }
 
-  .sheet-label {
-    font-family: "Courier New", Courier, monospace;
-    font-size: 0.9rem;
-    color: var(--color-steel-200, #687a92);
-    opacity: 0.6;
-    text-align: right;
-    margin-top: 2rem;
-    border-top: 1px dashed rgba(0, 0, 0, 0.1);
-    padding-top: 1rem;
-    mix-blend-mode: multiply;
-  }
-
   .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -280,92 +296,167 @@ import ProjectCard from "./ProjectCard.astro";
     max-width: 1800px;
     margin: 0 auto;
     display: flex;
-    margin-top: 0; /* Flush with section */
+    margin-top: 0;
     position: relative;
+    padding-top: 60px;
+  }
+
+  .tabs-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 60px;
+    background-color: var(--active-folder-color);
+    transition: background-color 0.5s ease;
+    z-index: 25;
   }
 
   .folder-tabs {
     display: flex;
-    width: 65%; /* Wider tabs */
-    gap: 0.25rem;
+    width: 65%;
     margin-right: auto;
+    position: relative;
   }
 
   .tab-btn {
     flex: 1;
-    border: none;
     padding: 1rem 2.5rem;
     cursor: pointer;
     position: relative;
     text-align: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 60px;
-    clip-path: polygon(0 0, 92% 0, 100% 100%, 0 100%);
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 30px;
     transform-origin: bottom center;
+    background: transparent;
+    border: none;
   }
 
-  /* Subtle inner border for depth */
+  .tab-background {
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+    z-index: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   .tab-btn::after {
     content: "";
     position: absolute;
     inset: 2px;
-    clip-path: polygon(0 0, 92% 0, 100% 100%, 0 100%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
     pointer-events: none;
+    z-index: 2;
   }
 
-  /* Colors for each tab */
+  /* Tab colors — dark cool tones */
   .tab-btn:nth-child(1) {
-    background-color: var(--color-steel-100, #8597a5);
-    color: white;
+    color: var(--color-steel-100, #c4d3e0);
   }
+  .tab-btn:nth-child(1) .tab-background {
+    background-color: #253038;
+  }
+
   .tab-btn:nth-child(2) {
-    background-color: #cbd5e1;
-    color: var(--color-steel-200, #687a92);
+    color: #c8bbdf;
   }
+  .tab-btn:nth-child(2) .tab-background {
+    background-color: #2a2738;
+  }
+
   .tab-btn:nth-child(3) {
-    background-color: var(--color-steel-200, #687a92);
-    color: white;
+    color: var(--color-steel-200, #adbfcf);
+  }
+  .tab-btn:nth-child(3) .tab-background {
+    background-color: #222838;
   }
 
-  /* Active tab styles */
+  /* Tab layers */
+  .tab-layer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300vw;
+    bottom: 100%;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+  }
+
+  .tab-btn:nth-child(1):not(.active) .tab-layer {
+    height: calc(60px + 16px);
+  }
+
+  .tab-btn:nth-child(2):not(.active) .tab-layer {
+    height: calc(60px + 24px);
+  }
+
+  .tab-btn:nth-child(3):not(.active) .tab-layer {
+    height: calc(60px + 32px);
+  }
+
+  .tab-btn:nth-child(1):hover:not(.active) .tab-layer {
+    height: calc(60px + 22px);
+  }
+
+  .tab-btn:nth-child(2):hover:not(.active) .tab-layer {
+    height: calc(60px + 30px);
+  }
+
+  .tab-btn:nth-child(3):hover:not(.active) .tab-layer {
+    height: calc(60px + 38px);
+  }
+
+  /* Active tab */
   .tab-btn.active {
+    z-index: 30;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Inactive tabs — staircase */
+  .tab-btn:nth-child(1):not(.active) {
+    z-index: 20;
+    transform: translateY(16px);
+  }
+
+  .tab-btn:nth-child(2):not(.active) {
+    z-index: 15;
+    transform: translateY(24px);
+  }
+
+  .tab-btn:nth-child(3):not(.active) {
     z-index: 10;
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
-    padding-bottom: 2rem;
+    transform: translateY(32px);
   }
 
-  /* Inactive tabs */
-  .tab-btn:not(.active) {
-    opacity: 0.7;
-    transform: scale(0.96);
+  .tab-btn:nth-child(1):hover:not(.active) {
+    transform: translateY(22px);
   }
 
-  .tab-btn:hover:not(.active) {
-    opacity: 0.85;
-    transform: scale(0.98) translateY(-2px);
-    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.12);
+  .tab-btn:nth-child(2):hover:not(.active) {
+    transform: translateY(30px);
   }
 
-  .tab-num {
-    font-size: 0.8rem;
-    font-weight: 600;
-    font-family: "Inter", sans-serif;
-    opacity: 0.6;
-    margin-bottom: 0.2rem;
+  .tab-btn:nth-child(3):hover:not(.active) {
+    transform: translateY(38px);
   }
 
   .tab-text {
-    font-family: "Times New Roman", serif;
-    font-size: 1.8rem;
+    font-family: "Inter", sans-serif;
+    font-size: 1.6rem;
     line-height: 1;
+    font-weight: 300;
     font-style: italic;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 0.05em;
   }
 
   @keyframes fadeIn {
@@ -391,9 +482,6 @@ import ProjectCard from "./ProjectCard.astro";
   }
 
   @media (max-width: 768px) {
-    .section-title {
-      font-size: 4rem;
-    }
     .folder-tabs {
       width: 100%;
       flex-direction: row;
@@ -414,6 +502,18 @@ import ProjectCard from "./ProjectCard.astro";
     }
     .project-grid {
       grid-template-columns: 1fr;
+    }
+
+    .tab-btn:nth-child(1):not(.active) {
+      transform: translateY(12px);
+    }
+
+    .tab-btn:nth-child(2):not(.active) {
+      transform: translateY(18px);
+    }
+
+    .tab-btn:nth-child(3):not(.active) {
+      transform: translateY(24px);
     }
   }
 </style>

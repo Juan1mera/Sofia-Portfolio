@@ -3,7 +3,7 @@
 import ProjectCard from "./ProjectCard.astro";
 ---
 
-<section id="artist" class="artist-section">
+<section id="artist" class="portfolio-section">
   <div class="header-container">
     <h2 class="section-title">ARTIST</h2>
   </div>
@@ -11,7 +11,7 @@ import ProjectCard from "./ProjectCard.astro";
   <div
     class="folder-system"
     id="artist-folders"
-    style="--active-folder-color: var(--color-sand-200, #E3CAAB);"
+    style="--active-folder-color: #2e2820;"
   >
     <!-- Full width background wrapper for CONTENT -->
     <div class="content-background">
@@ -60,7 +60,6 @@ import ProjectCard from "./ProjectCard.astro";
               link="#"
             />
           </div>
-          <!-- <div class="sheet-label">File: Digital_Works_2024</div> -->
         </div>
 
         <!-- Content: Classical -->
@@ -97,7 +96,6 @@ import ProjectCard from "./ProjectCard.astro";
               link="#"
             />
           </div>
-          <!-- <div class="sheet-label">File: Classical_Studies</div> -->
         </div>
 
         <!-- Content: Sketch -->
@@ -134,24 +132,22 @@ import ProjectCard from "./ProjectCard.astro";
               link="#"
             />
           </div>
-          <!-- <div class="sheet-label">File: Sketches_&_Concepts</div> -->
         </div>
       </div>
     </div>
 
-    <!-- Tabs Moved to Bottom -->
+    <!-- Tabs at Bottom -->
     <div class="tabs-wrapper bottom-tabs">
       <div class="folder-tabs">
         <!-- Tab 1: Digital -->
         <button
           class="tab-btn active"
           data-target="digital"
-          data-color="var(--color-sand-200, #E3CAAB)"
+          data-color="#2e2820"
           data-index="0"
         >
           <div class="tab-background"></div>
           <span class="tab-text">digital</span>
-          <!-- Capa visible de esta pestaña -->
           <div class="tab-layer" data-layer-index="0"></div>
         </button>
 
@@ -159,12 +155,11 @@ import ProjectCard from "./ProjectCard.astro";
         <button
           class="tab-btn"
           data-target="classical"
-          data-color="var(--color-sand-300, #C1AD94)"
+          data-color="#2a2420"
           data-index="1"
         >
           <div class="tab-background"></div>
           <span class="tab-text">classical</span>
-          <!-- Capa visible de esta pestaña -->
           <div class="tab-layer" data-layer-index="1"></div>
         </button>
 
@@ -172,12 +167,11 @@ import ProjectCard from "./ProjectCard.astro";
         <button
           class="tab-btn"
           data-target="sketch"
-          data-color="var(--color-steel-100, #8597A5)"
+          data-color="#253038"
           data-index="2"
         >
           <div class="tab-background"></div>
           <span class="tab-text">sketch</span>
-          <!-- Capa visible de esta pestaña -->
           <div class="tab-layer" data-layer-index="2"></div>
         </button>
       </div>
@@ -191,14 +185,8 @@ import ProjectCard from "./ProjectCard.astro";
     const tabs = system.querySelectorAll(".tab-btn");
     const sheets = system.querySelectorAll(".folder-sheet");
 
-    // Configuración de colores para cada pestaña
-    const tabColors = [
-      "var(--color-sand-200, #E3CAAB)",
-      "var(--color-sand-300, #C1AD94)",
-      "var(--color-steel-100, #8597A5)",
-    ];
+    const tabColors = ["#2e2820", "#2a2420", "#253038"];
 
-    // Función para actualizar las capas visibles
     function updateLayers() {
       tabs.forEach((tab, index) => {
         const layer = tab.querySelector(".tab-layer") as HTMLElement | null;
@@ -206,10 +194,8 @@ import ProjectCard from "./ProjectCard.astro";
 
         if (layer) {
           if (isActive) {
-            // La pestaña activa no muestra su capa (es el fondo principal)
             layer.style.display = "none";
           } else {
-            // Las pestañas inactivas muestran sus capas
             layer.style.display = "block";
             layer.style.backgroundColor = tabColors[index];
           }
@@ -217,33 +203,25 @@ import ProjectCard from "./ProjectCard.astro";
       });
     }
 
-    // Inicializar capas
     updateLayers();
 
     tabs.forEach((tab, currentIndex) => {
       tab.addEventListener("click", () => {
-        // Remove active class from tabs
         tabs.forEach((t) => t.classList.remove("active"));
-        // Add active class to clicked tab
         tab.classList.add("active");
-
-        // Hide all sheets
         sheets.forEach((sheet) => sheet.classList.remove("active"));
 
-        // Show target sheet
         const target = tab.getAttribute("data-target");
         const targetSheet = system.querySelector(
           `.folder-sheet[data-tab="${target}"]`,
         );
         if (targetSheet) targetSheet.classList.add("active");
 
-        // Update system variable for dynamic background color
         const color = tab.getAttribute("data-color");
         if (color) {
           system.style.setProperty("--active-folder-color", color);
         }
 
-        // Actualizar las capas
         updateLayers();
       });
     });
@@ -251,10 +229,10 @@ import ProjectCard from "./ProjectCard.astro";
 </script>
 
 <style>
-  .artist-section {
+  .portfolio-section {
     padding: 6rem 0;
-    background-color: #fff;
-    color: var(--color-steel-200, #687a92);
+    background-color: var(--color-bg-primary, #0a0a0a);
+    color: var(--color-text-primary, #f5f5f5);
     width: 100%;
     overflow-x: hidden;
   }
@@ -267,13 +245,14 @@ import ProjectCard from "./ProjectCard.astro";
   }
 
   .section-title {
-    font-family: "Inter", sans-serif;
+    font-family: "Alfa Slab One", serif;
     font-size: clamp(3rem, 10vw, 8rem);
-    font-weight: 900;
-    color: var(--color-sand-300, #c1ad94);
+    font-weight: 400;
+    color: var(--color-accent, #e3caab);
     text-transform: uppercase;
     line-height: 0.9;
     margin: 0;
+    letter-spacing: -0.02em;
   }
 
   /* Folder System */
@@ -281,7 +260,7 @@ import ProjectCard from "./ProjectCard.astro";
     width: 100%;
     display: flex;
     flex-direction: column;
-    --active-folder-color: var(--color-sand-200, #e3caab);
+    --active-folder-color: #1e1a15;
     transition: --active-folder-color 0.5s ease;
   }
 
@@ -291,8 +270,7 @@ import ProjectCard from "./ProjectCard.astro";
     background-color: var(--active-folder-color);
     transition: background-color 0.5s ease;
     padding: 3rem 0 0 0;
-    /* Box shadow to lift it up slightly */
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 -1px 0 rgba(227, 202, 171, 0.1);
     min-height: 500px;
     margin-bottom: 0;
   }
@@ -318,18 +296,6 @@ import ProjectCard from "./ProjectCard.astro";
     gap: 1rem;
   }
 
-  .sheet-label {
-    font-family: "Courier New", Courier, monospace;
-    font-size: 0.9rem;
-    color: var(--color-steel-200, #687a92);
-    opacity: 0.6;
-    text-align: right;
-    margin-top: 2rem;
-    border-top: 1px dashed rgba(0, 0, 0, 0.1);
-    padding-top: 1rem;
-    mix-blend-mode: multiply;
-  }
-
   .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -348,7 +314,6 @@ import ProjectCard from "./ProjectCard.astro";
     padding-top: 60px;
   }
 
-  /* Barra superior que conecta con el contenido */
   .tabs-wrapper::before {
     content: "";
     position: absolute;
@@ -366,9 +331,7 @@ import ProjectCard from "./ProjectCard.astro";
     display: flex;
     width: 65%;
     margin-right: auto;
-    margin-right: auto;
     position: relative;
-    /* Removed z-index to allow buttons to interleave with ::before */
   }
 
   .tab-btn {
@@ -384,8 +347,8 @@ import ProjectCard from "./ProjectCard.astro";
     align-items: center;
     min-height: 30px;
     transform-origin: bottom center;
-    /* Removed clip-path from parent to allow layer overflow */
     background: transparent;
+    border: none;
   }
 
   .tab-background {
@@ -405,30 +368,29 @@ import ProjectCard from "./ProjectCard.astro";
     z-index: 2;
   }
 
-  /* Colores de las pestañas */
-  /* Colores de las pestañas */
+  /* Tab colors — dark warm tones */
   .tab-btn:nth-child(1) {
-    color: #5a4a3a;
+    color: var(--color-accent, #e3caab);
   }
   .tab-btn:nth-child(1) .tab-background {
-    background-color: var(--color-sand-200, #e3caab);
+    background-color: #2e2820;
   }
 
   .tab-btn:nth-child(2) {
-    color: #4a3a2a;
+    color: var(--color-sand-300, #e8d5bc);
   }
   .tab-btn:nth-child(2) .tab-background {
-    background-color: var(--color-sand-300, #c1ad94);
+    background-color: #2a2420;
   }
 
   .tab-btn:nth-child(3) {
-    color: white;
+    color: var(--color-steel-100, #c4d3e0);
   }
   .tab-btn:nth-child(3) .tab-background {
-    background-color: var(--color-steel-100, #8597a5);
+    background-color: #253038;
   }
 
-  /* Capas por pestañas */
+  /* Tab layers */
   .tab-layer {
     position: absolute;
     left: 50%;
@@ -440,7 +402,6 @@ import ProjectCard from "./ProjectCard.astro";
     z-index: -1;
   }
 
-  /* Altura dinámica para cada capa según su posición cuando está inactiva */
   .tab-btn:nth-child(1):not(.active) .tab-layer {
     height: calc(60px + 16px);
   }
@@ -453,7 +414,6 @@ import ProjectCard from "./ProjectCard.astro";
     height: calc(60px + 32px);
   }
 
-  /* Durante hover, ajusta la altura */
   .tab-btn:nth-child(1):hover:not(.active) .tab-layer {
     height: calc(60px + 22px);
   }
@@ -466,14 +426,14 @@ import ProjectCard from "./ProjectCard.astro";
     height: calc(60px + 38px);
   }
 
-  /* ACTIVA - Al frente con z-index alto */
+  /* Active tab */
   .tab-btn.active {
     z-index: 30;
     transform: translateY(0);
     opacity: 1;
   }
 
-  /* INACTIVAS - Escalera hacia abajo con z-index descendente */
+  /* Inactive tabs — staircase */
   .tab-btn:nth-child(1):not(.active) {
     z-index: 20;
     transform: translateY(16px);
@@ -489,7 +449,6 @@ import ProjectCard from "./ProjectCard.astro";
     transform: translateY(32px);
   }
 
-  /* HOVER - Toda la sección se mueve hacia abajo */
   .tab-btn:nth-child(1):hover:not(.active) {
     transform: translateY(22px);
   }
@@ -502,21 +461,15 @@ import ProjectCard from "./ProjectCard.astro";
     transform: translateY(38px);
   }
 
-  .tab-num {
-    font-size: 0.8rem;
-    font-weight: 600;
-    font-family: "Inter", sans-serif;
-    opacity: 0.6;
-    margin-bottom: 0.2rem;
-  }
-
   .tab-text {
-    font-family: "Times New Roman", serif;
-    font-size: 1.8rem;
+    font-family: "Inter", sans-serif;
+    font-size: 1.6rem;
     line-height: 1;
+    font-weight: 300;
     font-style: italic;
     position: relative;
     z-index: 2;
+    letter-spacing: 0.05em;
   }
 
   @keyframes fadeIn {
@@ -564,7 +517,6 @@ import ProjectCard from "./ProjectCard.astro";
       grid-template-columns: 1fr;
     }
 
-    /* Ajustar el efecto de capas en móvil */
     .tab-btn:nth-child(1):not(.active) {
       transform: translateY(12px);
     }
